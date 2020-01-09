@@ -11,7 +11,7 @@ $db = [
     'host' => 'localhost',
     'username' => 'root',
     'password' => '',
-    'db' => 'db_restaurante' 
+    'db' => 'db_gasolinera' 
 ];
   //Abrir conexion a la base de datos
   function connect($db)
