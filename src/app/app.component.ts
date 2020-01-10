@@ -18,19 +18,30 @@ export class AppComponent {
     },
     {
       title: 'Clientes',
-      url: '/list',
+      url: '/clientes',
+      icon: 'list'
+    },
+    {
+      title: 'Combustibles',
+      url: '/list-combustibles',
       icon: 'list'
     },
     {
       title: 'Islas',
-      url: '/islas',
+      url: '/list-islas',
+      icon: 'list'
+    },
+    {
+      title: 'Usuarios',
+      url: '/list-usuarios',
       icon: 'list'
     },
     {
       title: 'Reportes',
-      url: '/reportes',
+      url: '/list-reportes',
       icon: 'list'
     }
+
   ];
 
   constructor(
