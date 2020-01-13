@@ -53,15 +53,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         usuarios us,
         roles ro
     WHERE
-        us.Id_Rol=ro.Id
+          us.Id_Rol=ro.Id
      AND   us.Cedula=:usuario
      AND   us.Contraseña=:contrasena;");
         $sql->bindValue(':usuario', $input['Cedula'] );
         $sql->bindValue(':contrasena', $input['Contraseña'] );
         $sql->execute();
-          $sql->setFetchMode(PDO::FETCH_ASSOC);
-          header("HTTP/1.1 200 OK");
-          echo json_encode( $sql->fetchAll()  );
+        $sql->setFetchMode(PDO::FETCH_ASSOC);
+         header("HTTP/1.1 200 OK");
+        echo json_encode( $sql->fetchAll()  );
        // echo json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
       
    

@@ -4,10 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LisClientesPage } from './lis-clientes.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LisClientesPage
-  }
+  
 ];
 
 @NgModule({

@@ -13,6 +13,10 @@ import {LocalStorageService} from 'ngx-webstorage';
 })
 export class AppComponent {
   public appPages = [
+   
+
+  ];
+  /**
     {
       title: 'Facturacion',
       url: '/home',
@@ -43,8 +47,7 @@ export class AppComponent {
       url: '/list-reportes',
       icon: 'list'
     }
-
-  ];
+   */
 
   constructor(
     private storage:LocalStorageService,
@@ -104,6 +107,7 @@ export class AppComponent {
     this.loginService.GenerarLogin(log).subscribe(
       res => {
         try {
+          
           if(res[0].id!=0){
             this.MostrarLogin(false);
            this.storage.store('Usuario',res[0]);
@@ -124,7 +128,8 @@ export class AppComponent {
     );
   }
   mostrarMenu(res:Login){
-    if(res.Rol='Administrador'){
+  
+    if(res.Rol=='Administrador'){
      this.appPages = [
         {
           title: 'Facturacion',
@@ -173,5 +178,6 @@ export class AppComponent {
     
       ];
     }
+    
   }
 }

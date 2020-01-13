@@ -4,10 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClientePage } from './cliente.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ClientePage
-  }
+ 
 ];
 
 @NgModule({
@@ -15,3 +12,9 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class ClientePageRoutingModule {}
+/*
+ {
+    path: '',
+    component: ClientePage
+  }
+*/

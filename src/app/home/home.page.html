@@ -6,6 +6,16 @@
     <ion-title>
       Gasolinera
     </ion-title>
+    <ion-buttons slot="end">
+      <a href="" (click)="Salir()">
+        <ion-button class="notification" autoHide="false">
+          <ion-icon size="large" name="power"></ion-icon>
+
+        </ion-button>
+      </a>
+
+
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -15,20 +25,100 @@
   
   <ion-card>
     <ion-item>
-      
-      <ion-label>Cliente</ion-label>
-      <ion-button fill="outline" slot="end">
-        <ion-icon name="contact" size="large" ></ion-icon>
+
+      <ion-label>Datos del Cliente</ion-label>
+      <ion-button fill="outline" slot="end" (click)="selCliente()">
+        <ion-icon size='large' name="people"></ion-icon>
       </ion-button>
     </ion-item>
-  
+
     <ion-card-content>
-      
+
+      <ion-item>
+        <ion-label position="stacked">Cedula</ion-label>
+        <ion-input readonly="true" id="txtCedula"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Nombres</ion-label>
+        <ion-input readonly="true" id="txtNombre"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Direccion</ion-label>
+        <ion-input readonly="true" id="txtDireccion"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Telefono</ion-label>
+        <ion-input readonly="true" id="txtTelefono"></ion-input>
+      </ion-item>
     </ion-card-content>
   </ion-card>
-  
- 
 
+  <ion-card>
+    <ion-item>
+      <ion-label>Autos</ion-label>
+    </ion-item>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Placa:</ion-label>
+        <ion-select okText="OK" value="" cancelText="Cancelar" id="selPlaca" (ionChange)="PlacaSelected()">
+          <ion-select-option value="{{pla.Id}}" *ngFor="let pla of listaPlacas">{{pla.Placa}}
+          </ion-select-option>
+  
+        </ion-select>
+      </ion-item>
+     </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-item>
+      <ion-label>Datos de la Venta</ion-label>
+    </ion-item>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Isla:</ion-label>
+        <ion-select okText="OK" value="" cancelText="Cancelar" id="selIsla" (ionChange)="IslaSelected()">
+          <ion-select-option value="{{isl.Id}}" *ngFor="let isl of listaIslas">{{isl.Descripcion}}
+          </ion-select-option>
+  
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Maquina:</ion-label>
+        <ion-select okText="OK" value="" cancelText="Cancelar" id="selMaquina" (ionChange)="MaquinaSelected()">
+          <ion-select-option value="{{isl.Id}}" *ngFor="let isl of listaMaquinas">{{isl.Descripcion}}
+          </ion-select-option>
+  
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Dispensador:</ion-label>
+        <ion-select okText="OK" value="" cancelText="Cancelar" id="selDispesador" (ionChange)="DispensadorSelected()">
+          <ion-select-option value="{{isl}}" *ngFor="let isl of listaDispensadores">{{isl.Descripcion}}-{{isl.Nombre}}
+          </ion-select-option>
+  
+        </ion-select>
+      </ion-item>
+      <ion-segment (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="Galones" checked>
+          <ion-label>Galones</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Dolares">
+          <ion-label>Dolares</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <ion-item>
+        <ion-label id="lblCantidad"  >{{etiqCantodad}}</ion-label>
+        <ion-input id="txtCantidad" (keyup)="checkCantidad($event)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label id="lblTotal">{{etiqTotal}}</ion-label>
+        <ion-input id="txtTotal" readonly="true"></ion-input>
+      </ion-item>
+      <ion-button shape="round" color="success" expand="full" (click)="GuardarFac()" >Guardar</ion-button>
+     </ion-card-content>
+  </ion-card>
 
 
 </ion-content>
