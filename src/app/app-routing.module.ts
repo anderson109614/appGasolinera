@@ -11,18 +11,8 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
-  {
-    path: 'lis-clientes',
-    loadChildren: () => import('./Pages/lis-clientes/lis-clientes.module').then( m => m.LisClientesPageModule)
-  },
-  {
-    path: 'cliente',
-    loadChildren: () => import('./Pages/cliente/cliente.module').then( m => m.ClientePageModule)
-  },
-  {
-    path: 'login',
-    loadChildren: () => import('./Pages/login/login.module').then( m => m.LoginPageModule)
-  },
+ 
+  
   {
     path: 'list-combustibles',
     loadChildren: () => import('./Pages/list-combustibles/list-combustibles.module').then( m => m.ListCombustiblesPageModule)
@@ -54,7 +44,12 @@ const routes: Routes = [
   {
     path: 'reporte',
     loadChildren: () => import('./Pages/reporte/reporte.module').then( m => m.ReportePageModule)
+  },
+  {
+    path: 'lis-clientes-nm',
+    loadChildren: () => import('./Pages/lis-clientes-nm/lis-clientes-nm.module').then( m => m.LisClientesNMPageModule)
   }
+
   
 ];
 

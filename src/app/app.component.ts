@@ -72,7 +72,9 @@ export class AppComponent {
     let lg:Login=this.storage.retrieve('Usuario');
     if(lg!=null){
       this.MostrarLogin(false);
+      this.mostrarMenu(lg);
     }else{
+      
       this.MostrarLogin(true);
     }
     
@@ -109,9 +111,10 @@ export class AppComponent {
         try {
           
           if(res[0].id!=0){
-            this.MostrarLogin(false);
-           this.storage.store('Usuario',res[0]);
             this.mostrarMenu(res[0]);
+           this.storage.store('Usuario',res[0]);
+            
+            this.MostrarLogin(false);
           //this.router.navigateByUrl('/home');
           } 
         }
@@ -128,8 +131,9 @@ export class AppComponent {
     );
   }
   mostrarMenu(res:Login){
-  
+    console.log("Entro ");
     if(res.Rol=='Administrador'){
+      console.log("Entro adm");
      this.appPages = [
         {
           title: 'Facturacion',
@@ -138,7 +142,7 @@ export class AppComponent {
         },
         {
           title: 'Clientes',
-          url: '/clientes',
+          url: '/lis-clientes-nm',
           icon: 'list'
         },
         {
@@ -172,7 +176,7 @@ export class AppComponent {
         },
         {
           title: 'Clientes',
-          url: '/clientes',
+          url: '/lis-clientes-nm',
           icon: 'list'
         }
     

@@ -26,8 +26,8 @@ export class HomePage {
   listaDispensadores:any=[];
   dispensadorUso:Dispensador;
   calculos:string='Galones';
-  etiqCantodad='Cantidad: GL';
-  etiqTotal='Total: $';
+  etiqCantodad='Cantidad:';
+  etiqTotal='Total:';
   cantidad:number=0;
   total:number=0;
   constructor(private usrService:UsuariosService,
@@ -43,6 +43,7 @@ export class HomePage {
     this.cargarIslas();
   }
   cargarIslas() {
+    console.log(this.UsuarioUso);
     this.usrService.getIslas(this.UsuarioUso.Id.toString()).subscribe(
       res => {
         console.log(res);
@@ -220,12 +221,12 @@ export class HomePage {
       if(value<this.dispensadorUso.Cant_Disponible){
         this.cantidad=value;
         this.total=total;
-        (<HTMLSelectElement>document.getElementById("txtTotal")).value=total.toString();
+        (<HTMLSelectElement>document.getElementById("txtTotal")).value=total.toString()+" $";
       }else{
         this.cantidad=this.dispensadorUso.Cant_Disponible;
         this.total=this.dispensadorUso.Cant_Disponible*this.dispensadorUso.Precio;
         (<HTMLSelectElement>document.getElementById("txtCantidad")).value=this.dispensadorUso.Cant_Disponible.toString();
-        (<HTMLSelectElement>document.getElementById("txtTotal")).value=(this.dispensadorUso.Cant_Disponible*this.dispensadorUso.Precio).toString();
+        (<HTMLSelectElement>document.getElementById("txtTotal")).value=(this.dispensadorUso.Cant_Disponible*this.dispensadorUso.Precio).toString()+" $";
       }
     
     }else{
@@ -234,12 +235,12 @@ export class HomePage {
       if(total<this.dispensadorUso.Cant_Disponible){
         this.cantidad=total;
         this.total=value;
-        (<HTMLSelectElement>document.getElementById("txtTotal")).value=total.toString();
+        (<HTMLSelectElement>document.getElementById("txtTotal")).value=total.toString()+" GL";
       }else{
         this.cantidad=this.dispensadorUso.Cant_Disponible;
         this.total=this.dispensadorUso.Cant_Disponible*this.dispensadorUso.Precio;
         (<HTMLSelectElement>document.getElementById("txtCantidad")).value=(this.dispensadorUso.Cant_Disponible*this.dispensadorUso.Precio).toString();
-        (<HTMLSelectElement>document.getElementById("txtTotal")).value=this.dispensadorUso.Cant_Disponible.toString();
+        (<HTMLSelectElement>document.getElementById("txtTotal")).value=this.dispensadorUso.Cant_Disponible.toString()+" GL";
       }
       //(<HTMLSelectElement>document.getElementById("txtTotal")).value='';
     }

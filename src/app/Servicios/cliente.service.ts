@@ -18,5 +18,12 @@ export class ClienteService {
   getAutos(id:string){
     return this.http.get(this.ip + 'Clientes/Autos.php?id='+id)
   }
+  UptateClientes(cli:Cliente){
+    return this.http.put<Cliente>(this.ip + 'Clientes/Clientes.php',cli)
+  }
+  eliminarClientes(cli:Cliente){
+    return this.http.delete(this.ip + 'Clientes/Clientes.php?id='+cli.Id)
+  }
+  
 
 }
