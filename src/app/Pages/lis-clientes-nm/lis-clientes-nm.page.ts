@@ -15,7 +15,7 @@ export class LisClientesNMPage implements OnInit {
   constructor(public alertController: AlertController,
     public serCli:ClienteService,
     public modalController: ModalController,
-    public toastController: ToastController,) { }
+    public toastController: ToastController) { }
 
   ngOnInit() {
     this.cargarCietes();
@@ -89,6 +89,8 @@ async EditarCliente(cli:Cliente){
     console.log('error');
   }
 }
+
+
 async eliminarClie(ids:Cliente){
   const alert = await this.alertController.create({
     header: 'Eliminar',

@@ -1,9 +1,57 @@
 <ion-header>
+
   <ion-toolbar>
-    <ion-title>ListUsuarios</ion-title>
+    <ion-buttons slot="start">
+      <ion-button autoHide="false">
+        <ion-icon size="large" name="arrow-round-back"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button autoHide="false" (click)="MostrarNuevo()">
+        <ion-icon size="large" name="person-add"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+    <ion-title>Lista de Usuarios</ion-title>
   </ion-toolbar>
+  <!-- Searchbar with a cancel button and custom cancel button text -->
+  <ion-searchbar showCancelButton="focus" (keyup)="checkUsuarios($event)" cancelButtonText="Custom Cancel">
+  </ion-searchbar>
 </ion-header>
 
 <ion-content>
+  <table style="width: 100%;">
+    <tr style="width: 100%;" *ngFor="let cli of LisUsuarios">
+      <td style="width: 100%;">
+        <ion-card style="width: 100%;" >
+          <ion-item>
+
+            <ion-label>{{cli.Nombre}} {{cli.Apellido}}</ion-label>
+            <ion-button fill="outline" slot="end" (click)="EditarUsuario(cli)">
+              <ion-icon size='large' name="create"></ion-icon>
+            </ion-button>
+            <ion-button fill="outline" slot="end" (click)="eliminarUsr(cli)">
+              <ion-icon size='large' name="trash"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-card-header>
+            <ion-card-subtitle>{{cli.Cedula}}</ion-card-subtitle>
+         
+            
+            
+        
+          </ion-card-header>
+
+          <ion-card-content>
+            {{cli.Direccion}}-{{cli.Telefono}}
+          </ion-card-content>
+        </ion-card>
+      </td>
+
+    </tr>
+  </table>
 
 </ion-content>
+
+

@@ -7,9 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { ListUsuariosPageRoutingModule } from './list-usuarios-routing.module';
 
 import { ListUsuariosPage } from './list-usuarios.page';
-
+import {UsuarioPage} from '../usuario/usuario.page';
+import {UsuarioPageModule} from '../usuario/usuario.module';
 @NgModule({
+  entryComponents:[UsuarioPage],
   imports: [
+    UsuarioPageModule,
     CommonModule,
     FormsModule,
     IonicModule,

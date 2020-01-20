@@ -1,9 +1,49 @@
 <ion-header>
+  
   <ion-toolbar>
-    <ion-title>Usuario</ion-title>
+    <ion-buttons slot="start">
+      <ion-button autoHide="false" (click)="regresarBTN()">
+        <ion-icon size="large" name="arrow-round-back"></ion-icon>
+      </ion-button>
+  
+    </ion-buttons>
+    <ion-title>Usuarios</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-item>
+    <ion-label position="floating">Cedula</ion-label>
+    <ion-input id="txtCedulaN"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input id="txtNombreN"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Apellido</ion-label>
+    <ion-input id="txtApellidoN"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Direccion</ion-label>
+    <ion-input id="txtDireccionN"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Telefono</ion-label>
+    <ion-input id="txtTelefonoN"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Contrasena</ion-label>
+    <ion-input type="Password" id="txtPassN"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Rol:</ion-label>
+    <ion-select okText="OK" value="" cancelText="Cancelar" id="selRol" (ionChange)="IslaSelected()">
+      <ion-select-option value="{{isl.Id}}" *ngFor="let isl of listaRoles">{{isl.Nombre}}
+      </ion-select-option>
 
+    </ion-select>
+  </ion-item>
+  <ion-button shape="round" color="success" expand="full" (click)="GuardarCLI()" >Guardar</ion-button>
 </ion-content>
+
