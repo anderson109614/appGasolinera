@@ -103,7 +103,7 @@ export class IslaPage implements OnInit {
     console.log(cli);
     if(cli.Descripcion.length==0){
       this.presentToast('Ingrese Descripcion');
-    }else if(cli.Id_Usuario.toString().length==0){
+    }else if((<HTMLSelectElement>document.getElementById("selIsla")).value.length==0){
       this.presentToast('Seleccione Usuario');
     }else{
       this.serCom.PostIsla(cli).subscribe(
