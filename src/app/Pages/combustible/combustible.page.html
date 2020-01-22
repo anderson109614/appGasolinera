@@ -1,9 +1,30 @@
 <ion-header>
+  
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button autoHide="false" (click)="regresarBTN()">
+        <ion-icon size="large" name="arrow-round-back"></ion-icon>
+      </ion-button>
+  
+    </ion-buttons>
     <ion-title>Combustible</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input id="txtNombreN"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Precio</ion-label>
+    <ion-input id="txtPrecioN"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Cantidad</ion-label>
+    <ion-input id="txtCantidadN"></ion-input>
+  </ion-item>
+  
+  <ion-button shape="round" color="success" expand="full" (click)="GuardarCLI()" >Guardar</ion-button>
 </ion-content>

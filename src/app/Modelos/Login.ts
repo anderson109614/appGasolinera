@@ -5,7 +5,7 @@ export interface Login{
     Apellido:string,
     Telefono:string,
     Direccion:string,
-    Contraseña:string,
+    Contrasena:string,
     Rol:string
     
 }

@@ -5,7 +5,7 @@ export interface Usuario{
     Apellido: string,
     Telefono: string,
     Direccion: string,
-    Contraseña:string,
+    Contrasena:string,
     IdRol:number,
     Rol:string
    

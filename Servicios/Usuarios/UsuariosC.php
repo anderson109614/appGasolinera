@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             us.Apellido,
             us.Telefono,
             us.Direccion,
-            us.Contraseña,
+            us.Contrasena,
             ro.Id as IdRol,
             ro.Nombre as Rol
         FROM
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             Apellido,
             Telefono,
             Direccion,
-            Contraseña,
+            Contrasena,
             Id_Rol,
             Estado
         )
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             :Apellido,
             :Telefono,
             :Direccion,
-            :Contraseña,
+            :Contrasena,
             :Id_Rol,
             1
         )";
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $statement->bindValue(':Apellido', $input['Apellido'] );
         $statement->bindValue(':Telefono', $input['Telefono'] );
         $statement->bindValue(':Direccion', $input['Direccion'] );
-        $statement->bindValue(':Contraseña', $input['Contraseña'] );
+        $statement->bindValue(':Contrasena', $input['Contrasena'] );
         $statement->bindValue(':Id_Rol', $input['IdRol'] );
         
         
@@ -101,7 +101,7 @@ SET
     Apellido =:Apellido,
     Telefono = :Telefono,
     Direccion = :Direccion,
-    Contraseña =:Contraseña,
+    Contrasena =:Contrasena,
     Id_Rol =:Id_Rol 
 WHERE
     Id= :id";
@@ -114,7 +114,7 @@ WHERE
         $statement->bindValue(':Apellido', $input['Apellido'] );
         $statement->bindValue(':Telefono', $input['Telefono'] );
         $statement->bindValue(':Direccion', $input['Direccion'] );
-        $statement->bindValue(':Contraseña', $input['Contraseña'] );
+        $statement->bindValue(':Contrasena', $input['Contrasena'] );
         $statement->bindValue(':Id_Rol', $input['IdRol'] );
      
   

@@ -5,7 +5,15 @@ $dbConn =  connect($db);
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     try {
       
-            $sql = $dbConn->prepare("SELECT codtab as codigo, nomtab as NombreEstado FROM `maetab` WHERE `numtab` = '49' and codtab<>'' ");
+            $sql = $dbConn->prepare(" SELECT
+            Id,
+            Nombre,
+            Precio,
+            Cant_Disponible as Cantidad
+        FROM
+            combustibles
+        WHERE
+             Estado=1");
 
            
             
@@ -21,24 +29,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    /*
+    
     try {
         //$input = $_POST;
         $input = (array) json_decode(file_get_contents('php://input'), TRUE);
-        $sql = "INSERT INTO prestamos_laboratorios(
-            id_laboratorio,
-            Fecha,
-            Descripcion
+        $sql = "INSERT INTO combustibles(
+            Nombre,
+            Precio,
+            Cant_Disponible,
+            Estado
         )
         VALUES(
-            :id_laboratorio,
-            NOW(),
-            :Descripcion
-        )";
+            :Nombre,
+            :Precio,
+            :Cantidad,
+            1)";
         $statement = $dbConn->prepare($sql);
-        $statement->bindValue(':id_laboratorio', $input['idLab']);
-        $statement->bindValue(':Descripcion', $input['des']);
-              
+        $statement->bindValue(':Nombre', $input['Nombre']);
+        $statement->bindValue(':Precio', $input['Precio']);
+        $statement->bindValue(':Cantidad', $input['Cantidad']); 
         // bindAllValues($statement, $input,-1);
         $statement->execute();
         $postId = $dbConn->lastInsertId();
@@ -50,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } catch (Exception $e) {
         echo 'Excepción capturada: ',  $e->getMessage(), "\n";
     }
-    */
+    
 }
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     /*

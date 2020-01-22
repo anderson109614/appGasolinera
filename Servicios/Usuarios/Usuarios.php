@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         us.Apellido,
         us.Telefono,
         us.Direccion,
-        us.Contraseña,
+        us.Contrasena,
         ro.Nombre as Rol
     FROM
         usuarios us,
@@ -24,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     WHERE
           us.Id_Rol=ro.Id
      AND   us.Cedula=:usuario
-     AND   us.Contraseña=:contrasena;");
+     AND   us.Contrasena=:contrasena;");
         $sql->bindValue(':usuario', $input['Cedula'] );
-        $sql->bindValue(':contrasena', $input['Contraseña'] );
+        $sql->bindValue(':contrasena', $input['Contrasena'] );
         $sql->execute();
         $sql->setFetchMode(PDO::FETCH_ASSOC);
          header("HTTP/1.1 200 OK");

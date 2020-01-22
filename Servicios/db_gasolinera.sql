@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-01-2020 a las 04:36:25
--- Versión del servidor: 10.4.10-MariaDB
--- Versión de PHP: 7.3.12
+-- Tiempo de generación: 22-01-2020 a las 02:13:11
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -55,17 +55,18 @@ CREATE TABLE `clientes` (
   `Nombre` varchar(50) NOT NULL,
   `Apellido` varchar(50) NOT NULL,
   `Telefono` varchar(10) NOT NULL,
-  `Direccion` varchar(50) NOT NULL
+  `Direccion` varchar(50) NOT NULL,
+  `Estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`Id`, `Cedula`, `Nombre`, `Apellido`, `Telefono`, `Direccion`) VALUES
-(1, '1801', 'Pedro', 'Montero', '0939180393', 'Patate'),
-(2, '1802', 'Juan', 'Almeida', '1111111111', 'Pelileo'),
-(3, '1803', 'Pepe', 'Julio', '09876', 'Ambato');
+INSERT INTO `clientes` (`Id`, `Cedula`, `Nombre`, `Apellido`, `Telefono`, `Direccion`, `Estado`) VALUES
+(1, '1801', 'Pedro', 'Montero', '0939180301', 'Patate', 1),
+(2, '1802', 'Juan', 'Almeida', '1111111111', 'Pelileo', 1),
+(3, '1803', 'Pepe', 'Julio', '09876', 'Ambato', 1);
 
 -- --------------------------------------------------------
 
@@ -77,16 +78,17 @@ CREATE TABLE `combustibles` (
   `Id` int(11) NOT NULL,
   `Nombre` varchar(50) NOT NULL,
   `Precio` double NOT NULL,
-  `Cant_Disponible` double NOT NULL
+  `Cant_Disponible` double NOT NULL,
+  `Estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `combustibles`
 --
 
-INSERT INTO `combustibles` (`Id`, `Nombre`, `Precio`, `Cant_Disponible`) VALUES
-(3, 'Extra', 1.2, 10),
-(4, 'Super', 1.8, 1);
+INSERT INTO `combustibles` (`Id`, `Nombre`, `Precio`, `Cant_Disponible`, `Estado`) VALUES
+(3, 'Extra', 1.2, 10, 1),
+(4, 'Super', 1.8, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -187,17 +189,19 @@ CREATE TABLE `usuarios` (
   `Apellido` varchar(50) NOT NULL,
   `Telefono` varchar(10) NOT NULL,
   `Direccion` varchar(50) NOT NULL,
-  `Contraseña` varchar(50) NOT NULL,
-  `Id_Rol` int(11) NOT NULL
+  `Contrasena` varchar(50) NOT NULL,
+  `Id_Rol` int(11) NOT NULL,
+  `Estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`Id`, `Cedula`, `Nombre`, `Apellido`, `Telefono`, `Direccion`, `Contraseña`, `Id_Rol`) VALUES
-(1, '1804', 'Pedro', 'Montero', '0939180393', 'Patate', '1234', 1),
-(2, '1805', 'Juan', 'Alias', '0987686', 'Pelileo', '1234', 2);
+INSERT INTO `usuarios` (`Id`, `Cedula`, `Nombre`, `Apellido`, `Telefono`, `Direccion`, `Contrasena`, `Id_Rol`, `Estado`) VALUES
+(1, '1804', 'Pedro', 'Montero', '0939180393', 'Patate 2', '1234', 1, 1),
+(2, '1805', 'Juan', 'Alias', '0987686', 'Pelileo', '1234', 2, 1),
+(3, '1809', 'p1', 'p1', '123', 'p1', '1234', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -340,7 +344,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`

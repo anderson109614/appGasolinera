@@ -4,10 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CombustiblePage } from './combustible.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: CombustiblePage
-  }
+  
 ];
 
 @NgModule({

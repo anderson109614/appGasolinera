@@ -102,7 +102,7 @@ export class AppComponent {
       Apellido:'',
       Telefono:'',
       Direccion:'',
-      Contraseña:cont,
+      Contrasena:cont,
       Rol:''
 
     }

@@ -51,7 +51,7 @@ export class UsuarioPage implements OnInit {
     (<HTMLSelectElement>document.getElementById("txtApellidoN")).value = this.usuario.Apellido;
     (<HTMLSelectElement>document.getElementById("txtDireccionN")).value = this.usuario.Direccion;
     (<HTMLSelectElement>document.getElementById("txtTelefonoN")).value = this.usuario.Telefono;
-    (<HTMLSelectElement>document.getElementById("txtPassN")).value = this.usuario.Telefono;
+    (<HTMLSelectElement>document.getElementById("txtPassN")).value = this.usuario.Contrasena;
     (<HTMLSelectElement>document.getElementById("txtTelefonoN")).value = this.usuario.Telefono;
     (<HTMLSelectElement>document.getElementById("selRol")).value=this.usuario.IdRol.toString();
   }
@@ -74,7 +74,7 @@ export class UsuarioPage implements OnInit {
       Apellido:(<HTMLSelectElement>document.getElementById("txtApellidoN")).value,
       Telefono:(<HTMLSelectElement>document.getElementById("txtTelefonoN")).value,
       Direccion:(<HTMLSelectElement>document.getElementById("txtDireccionN")).value,
-      Contraseña:(<HTMLSelectElement>document.getElementById("txtPassN")).value,
+      Contrasena:(<HTMLSelectElement>document.getElementById("txtPassN")).value,
       IdRol:Number.parseInt((<HTMLSelectElement>document.getElementById("selRol")).value) ,
       Rol:"" 
     };
@@ -89,7 +89,7 @@ export class UsuarioPage implements OnInit {
       this.presentToast('Ingrese Telefono');
     }else if(cli.Direccion.length==0){
       this.presentToast('Ingrese Direccion');
-    }else if(cli.Contraseña.length==0){
+    }else if(cli.Contrasena.length==0){
       this.presentToast('Ingrese Contrase;a');
     }else if(cli.Id.toString().length==0){
       this.presentToast('Seleccione ROl');
@@ -115,7 +115,7 @@ export class UsuarioPage implements OnInit {
       Apellido:(<HTMLSelectElement>document.getElementById("txtApellidoN")).value,
       Telefono:(<HTMLSelectElement>document.getElementById("txtTelefonoN")).value,
       Direccion:(<HTMLSelectElement>document.getElementById("txtDireccionN")).value ,
-      Contraseña:(<HTMLSelectElement>document.getElementById("txtPassN")).value,
+      Contrasena:(<HTMLSelectElement>document.getElementById("txtPassN")).value,
       IdRol:Number.parseInt((<HTMLSelectElement>document.getElementById("selRol")).value) ,
       Rol:""     
     };
@@ -130,7 +130,7 @@ export class UsuarioPage implements OnInit {
       this.presentToast('Ingrese Telefono');
     }else if(cli.Direccion.length==0){
       this.presentToast('Ingrese Direccion');
-    }else if(cli.Contraseña.length==0){
+    }else if(cli.Contrasena.length==0){
       this.presentToast('Ingrese Contrase;a');
     }else if(cli.Id.toString().length==0){
       this.presentToast('Seleccione ROl');
