@@ -80,6 +80,7 @@
           <ion-label>Isla:</ion-label>
           <ion-select okText="OK" value="" cancelText="Cancelar" id="selIsla" (ionChange)="IslaSelected()">
             <ion-select-option value="{{isl.Id}}" *ngFor="let isl of listaIslas">{{isl.Descripcion}}
+              
             </ion-select-option>
     
           </ion-select>

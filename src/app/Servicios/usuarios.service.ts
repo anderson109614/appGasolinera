@@ -12,6 +12,8 @@ export class UsuariosService {
   getIslas(id:string){
     return this.http.get(this.ip + 'Usuarios/Islas.php?id='+id)
   }
+
+  
   getRoles(){
     return this.http.get(this.ip + 'Usuarios/Roles.php')
   }
