@@ -5,7 +5,7 @@ $dbConn =  connect($db);
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     try {
         if (isset($_GET['id'])) {
-            $sql = $dbConn->prepare(" SELECT Id,Descripcion FROM `islas` WHERE Id_Usuario=:id");
+            $sql = $dbConn->prepare(" SELECT Id,Descripcion FROM `islas` WHERE Id_Usuario=:id AND Estado=1");
             $sql->bindValue(':id', $_GET['id']);
             
             $sql->execute();
@@ -13,17 +13,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             header("HTTP/1.1 200 OK");
             echo json_encode($sql->fetchAll());
         }else{
-            /*
-            $sql = $dbConn->prepare(" SELECT
-            *
-        FROM
-            `clientes`");
+            
+            $sql = $dbConn->prepare("SELECT
+            isl.Id,
+            isl.Descripcion,
+            isl.Id_Usuario,
+            CONCAT(usr.Nombre , ' ', usr.Apellido) as Nombre
+           
+       FROM
+           islas isl,
+           usuarios usr
+       WHERE
+           isl.Id_Usuario=usr.Id
+          AND isl.Estado=1");
                        
             $sql->execute();
             $sql->setFetchMode(PDO::FETCH_ASSOC);
             header("HTTP/1.1 200 OK");
             echo json_encode($sql->fetchAll());
-            */
+            
         }  
     } catch (Exception $e) {
         echo 'Excepción capturada: ',  $e->getMessage(), "\n";

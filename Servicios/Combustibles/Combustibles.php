@@ -62,13 +62,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
 }
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
-    /*
+    
     try {
-        $idpre = $_GET['idPrestamo'];
-        $idhor = $_GET['idHorarios'];
-        $statement = $dbConn->prepare("DELETE FROM prestamos_laboratorios_horarios WHERE id_prestamo=:idPrestamo AND id_horario=:idHorario");
-        $statement->bindValue(':idPrestamo', $idpre);
-        $statement->bindValue(':idHorario', $idhor);
+        $idpre = $_GET['id'];
+        
+        $statement = $dbConn->prepare("UPDATE
+        combustibles
+    SET
+        
+        Estado = 0
+    WHERE
+         Id=:id");
+        $statement->bindValue(':id', $idpre);
+        
         $statement->execute();
         $object3 = (object) [
             'id' => $idpre,
@@ -80,7 +86,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
     } catch (Exception $e) {
         echo 'Excepción capturada: ',  $e->getMessage(), "\n";
     }
-    */
+    
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'PUT')
+{
+    try{
+    //$input = $_GET;
+    $input = (array) json_decode(file_get_contents('php://input'), TRUE);
+   
+   
+    $sql = "UPDATE
+    combustibles
+SET
+    Nombre =:Nombre,
+    Precio =:Precio ,
+    Cant_Disponible = :Cantidad
+WHERE
+    Id=:Id";
+
+    $statement = $dbConn->prepare($sql);
+    
+
+        $statement->bindValue(':Nombre', $input['Nombre'] );
+        $statement->bindValue(':Precio', $input['Precio'] );
+        $statement->bindValue(':Cantidad', $input['Cantidad'] );
+        $statement->bindValue(':Id', $input['Id'] );
+      
+  
+    $statement->execute();
+  
+    header("HTTP/1.1 200 OK");
+    echo json_encode($input);
+    } catch (Exception $e) {
+        echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+    }
 }
 header('Content-type: application/json');
 header("Access-Control-Allow-Origin: *");
