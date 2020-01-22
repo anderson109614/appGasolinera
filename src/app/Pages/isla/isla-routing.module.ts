@@ -4,10 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IslaPage } from './isla.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: IslaPage
-  }
+  
 ];
 
 @NgModule({

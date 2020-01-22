@@ -11,8 +11,7 @@ import {Combustible} from '../../Modelos/Combustible';
 export class CombustiblePage implements OnInit {
   @Input() nuevo: boolean;
   @Input() combustible: Combustible;
-  rolSelec:string="";
-  listaRoles:any =[];
+
   constructor(public serCom:CombustiblesService,
     public modalController: ModalController,
     public toastController: ToastController) { }

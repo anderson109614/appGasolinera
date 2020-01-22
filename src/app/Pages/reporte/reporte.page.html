@@ -1,9 +1,16 @@
 <ion-header>
+  
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button autoHide="false" (click)="regresarBTN()">
+        <ion-icon size="large" name="arrow-round-back"></ion-icon>
+      </ion-button>
+  
+    </ion-buttons>
     <ion-title>Reporte</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<iframe id="FrameReporte" src="" type="application/pdf" width="100%" height="600px" frameborder="0"></iframe>
 </ion-content>

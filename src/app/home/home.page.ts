@@ -11,6 +11,7 @@ import { Login } from '../Modelos/Login';
 import { Dispensador } from '../Modelos/Dispensador';
 import {Venta} from '../Modelos/Venta';
 import {FacturaService }from '../Servicios/factura.service';
+import {ReportePage} from '../Pages/reporte/reporte.page';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -267,6 +268,7 @@ export class HomePage {
         res => {
           console.log(res);
           this.Limpiar();
+          this.MostrarReporte(res.Id.toString());
          
         },
         err => {
@@ -280,6 +282,18 @@ export class HomePage {
 
 
     }
+  }
+  async MostrarReporte(id:string){
+    const modal = await this.modalController.create({
+      component: ReportePage,
+      componentProps: {
+        ruta: 'Reportes/Factura.php?id='+id
+      }
+  
+    });
+    await modal.present();
+  
+    
   }
   Limpiar(){
     this.ClienteUso=undefined;

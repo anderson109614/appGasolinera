@@ -9,9 +9,13 @@ import {LisClientesPageModule} from '../Pages/lis-clientes/lis-clientes.module';
 import {LisClientesPage} from '../Pages/lis-clientes/lis-clientes.page';
 import {ClientePageModule} from '../Pages/cliente/cliente.module';
 import {ClientePage} from '../Pages/cliente/cliente.page';
+
+import {ReportePageModule} from '../Pages/reporte/reporte.module';
+import {ReportePage} from '../Pages/reporte/reporte.page';
 @NgModule({
-  entryComponents:[LisClientesPage,ClientePage],
+  entryComponents:[LisClientesPage,ClientePage,ReportePage],
   imports: [
+    ReportePageModule,
     ClientePageModule,
     LisClientesPageModule,
     CommonModule,

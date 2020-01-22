@@ -40,32 +40,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-   /*
+   
     try {
         //$input = $_POST;
         $input = (array) json_decode(file_get_contents('php://input'), TRUE);
-        $sql = "INSERT INTO clientes(
-            
-            Cedula,
-            Nombre,
-            Apellido,
-            Telefono,
-            Direccion
+        $sql = "INSERT INTO islas(
+            Descripcion,
+            Id_Usuario,
+            Estado
         )
         VALUES(
-            
-            :Cedula,
-            :Nombre,
-            :Apellido,
-            :Telefono,
-            :Direccion
+            :Descripcion,
+            :Id_Usuario,
+            1
         )";
         $statement = $dbConn->prepare($sql);
-        $statement->bindValue(':Cedula', $input['Cedula']);
-        $statement->bindValue(':Nombre', $input['Nombre']);
-        $statement->bindValue(':Apellido', $input['Apellido']);
-        $statement->bindValue(':Telefono', $input['Telefono']);
-        $statement->bindValue(':Direccion', $input['Direccion']);
+        $statement->bindValue(':Descripcion', $input['Descripcion']);
+        $statement->bindValue(':Id_Usuario', $input['Id_Usuario']);
+     
+        
         
         // bindAllValues($statement, $input,-1);
         $statement->execute();
@@ -78,10 +71,69 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } catch (Exception $e) {
         echo 'Excepción capturada: ',  $e->getMessage(), "\n";
     }
-   */
+   
 
 }
+if ($_SERVER['REQUEST_METHOD'] == 'DELETE') {
+    
+    try {
+        $idpre = $_GET['id'];
+        
+        $statement = $dbConn->prepare("UPDATE
+        islas
+    SET
+        
+        Estado = 0
+    WHERE
+         Id=:id");
+        $statement->bindValue(':id', $idpre);
+        
+        $statement->execute();
+        $object3 = (object) [
+            'id' => $idpre,
+            'msj' => 'OK'
+                        
+          ];
+        header("HTTP/1.1 200 OK");
+        echo json_encode($object3);
+    } catch (Exception $e) {
+        echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+    }
+    
+}
 
+if ($_SERVER['REQUEST_METHOD'] == 'PUT')
+{
+    try{
+    //$input = $_GET;
+    $input = (array) json_decode(file_get_contents('php://input'), TRUE);
+   
+   
+    $sql = "UPDATE
+    islas
+SET
+   Descripcion = :Descripcion,
+   Id_Usuario = :Id_Usuario
+WHERE
+    Id=:Id";
+
+    $statement = $dbConn->prepare($sql);
+    
+
+        $statement->bindValue(':Descripcion', $input['Descripcion'] );
+        $statement->bindValue(':Id_Usuario', $input['Id_Usuario'] );
+     
+        $statement->bindValue(':Id', $input['Id'] );
+      
+  
+    $statement->execute();
+  
+    header("HTTP/1.1 200 OK");
+    echo json_encode($input);
+    } catch (Exception $e) {
+        echo 'Excepción capturada: ',  $e->getMessage(), "\n";
+    }
+}
 
 header('Content-type: application/json');
 header("Access-Control-Allow-Origin: *");

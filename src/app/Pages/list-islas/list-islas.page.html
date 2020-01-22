@@ -16,35 +16,28 @@
     <ion-title>Lista de Islas</ion-title>
   </ion-toolbar>
   <!-- Searchbar with a cancel button and custom cancel button text -->
-  <ion-searchbar showCancelButton="focus" (keyup)="checkCombustibel($event)" cancelButtonText="Custom Cancel">
+  <ion-searchbar showCancelButton="focus" (keyup)="checkIsla($event)" cancelButtonText="Custom Cancel">
   </ion-searchbar>
 </ion-header>
 
 <ion-content>
   <table style="width: 100%;">
-    <tr style="width: 100%;" *ngFor="let cli of LisCombustibles">
+    <tr style="width: 100%;" *ngFor="let cli of LisIslas">
       <td style="width: 100%;">
         <ion-card style="width: 100%;" >
           <ion-item>
 
-            <ion-label>{{cli.Nombre}} </ion-label>
-            <ion-button fill="outline" slot="end" (click)="EditarCombustible(cli)">
+            <ion-label>{{cli.Descripcion}} </ion-label>
+            <ion-button fill="outline" slot="end" (click)="EditarIsla(cli)">
               <ion-icon size='large' name="create"></ion-icon>
             </ion-button>
             <ion-button fill="outline" slot="end" (click)="eliminarCon(cli)">
               <ion-icon size='large' name="trash"></ion-icon>
             </ion-button>
           </ion-item>
-          <ion-card-header>
-            <ion-card-subtitle>{{cli.Precio}} $</ion-card-subtitle>
          
-            
-            
-        
-          </ion-card-header>
-
           <ion-card-content>
-            {{cli.Cantidad}} GL
+            {{cli.Nombre}}
           </ion-card-content>
         </ion-card>
       </td>

@@ -7,9 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { ListIslasPageRoutingModule } from './list-islas-routing.module';
 
 import { ListIslasPage } from './list-islas.page';
-
+import {IslaPage} from '../isla/isla.page';
+import {IslaPageModule} from '../isla/isla.module';
 @NgModule({
+  entryComponents:[IslaPage],
   imports: [
+    IslaPageModule,
     CommonModule,
     FormsModule,
     IonicModule,
