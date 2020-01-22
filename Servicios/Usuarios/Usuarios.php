@@ -24,7 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     WHERE
           us.Id_Rol=ro.Id
      AND   us.Cedula=:usuario
-     AND   us.Contrasena=:contrasena;");
+     AND   us.Contrasena=:contrasena
+     AND   us.Estado=1
+     ;");
         $sql->bindValue(':usuario', $input['Cedula'] );
         $sql->bindValue(':contrasena', $input['Contrasena'] );
         $sql->execute();
