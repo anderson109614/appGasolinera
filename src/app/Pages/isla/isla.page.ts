@@ -61,10 +61,15 @@ export class IslaPage implements OnInit {
   }
 
   GuardarACT(){
+    let a:string=(<HTMLSelectElement>document.getElementById("selIsla")).value;
+    if(a.length==0){
+      a=this.isla.Id_Usuario.toString();
+    }
+
     let cli:Isla={
       Id:this.isla.Id,
       Descripcion :(<HTMLSelectElement>document.getElementById("txtDescripcionN")).value,
-      Id_Usuario:Number.parseFloat((<HTMLSelectElement>document.getElementById("selIsla")).value),
+      Id_Usuario:Number.parseFloat(a),
       Nombre:""
       
     };

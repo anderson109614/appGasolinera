@@ -156,6 +156,16 @@ export class AppComponent {
           icon: 'list'
         },
         {
+          title: 'Maquinas',
+          url: '/lis-maquina',
+          icon: 'list'
+        },
+        {
+          title: 'Dispensadores',
+          url: '/lis-dispensador',
+          icon: 'list'
+        },
+        {
           title: 'Usuarios',
           url: '/list-usuarios',
           icon: 'list'

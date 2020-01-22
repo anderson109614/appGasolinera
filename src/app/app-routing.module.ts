@@ -48,7 +48,23 @@ const routes: Routes = [
   {
     path: 'lis-clientes-nm',
     loadChildren: () => import('./Pages/lis-clientes-nm/lis-clientes-nm.module').then( m => m.LisClientesNMPageModule)
+  },  {
+    path: 'maquina',
+    loadChildren: () => import('./Pages/maquina/maquina.module').then( m => m.MaquinaPageModule)
+  },
+  {
+    path: 'dispensador',
+    loadChildren: () => import('./Pages/dispensador/dispensador.module').then( m => m.DispensadorPageModule)
+  },
+  {
+    path: 'lis-maquina',
+    loadChildren: () => import('./Pages/lis-maquina/lis-maquina.module').then( m => m.LisMaquinaPageModule)
+  },
+  {
+    path: 'lis-dispensador',
+    loadChildren: () => import('./Pages/lis-dispensador/lis-dispensador.module').then( m => m.LisDispensadorPageModule)
   }
+
 
   
 ];

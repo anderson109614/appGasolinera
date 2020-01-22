@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-01-2020 a las 06:13:53
+-- Tiempo de generación: 22-01-2020 a las 08:40:39
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -31,17 +31,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `autos` (
   `Id` int(11) NOT NULL,
   `Placa` varchar(10) NOT NULL,
-  `Id_cliente` int(11) NOT NULL
+  `Id_cliente` int(11) NOT NULL,
+  `Estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `autos`
 --
 
-INSERT INTO `autos` (`Id`, `Placa`, `Id_cliente`) VALUES
-(1, 'ABC-123', 1),
-(2, 'ABC-234', 2),
-(3, 'BCA-543', 3);
+INSERT INTO `autos` (`Id`, `Placa`, `Id_cliente`, `Estado`) VALUES
+(1, 'ABC-123', 1, 1),
+(2, 'ABC-234', 2, 1),
+(3, 'BCA-543', 3, 1),
+(4, '123-546', 4, 1),
+(5, 'lll', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -66,7 +69,9 @@ CREATE TABLE `clientes` (
 INSERT INTO `clientes` (`Id`, `Cedula`, `Nombre`, `Apellido`, `Telefono`, `Direccion`, `Estado`) VALUES
 (1, '1801', 'Pedro', 'Montero', '0939180301', 'Patate', 1),
 (2, '1802', 'Juan', 'Almeida', '1111111111', 'Pelileo', 1),
-(3, '1803', 'Pepe', 'Julio', '09876', 'Ambato', 1);
+(3, '1803', 'Pepe', 'Julio', '09876', 'Ambato', 1),
+(4, '12', 'p', '1', '1', '1', 1),
+(5, '123', 'asd', 'asd', '123', 'asd', 1);
 
 -- --------------------------------------------------------
 
@@ -113,7 +118,8 @@ INSERT INTO `dispensador` (`Id`, `Descripcion`, `Id_Maquina`, `Id_Combustible`, 
 (1, 'Dispensador 1', 1, 3, 1),
 (2, 'Dispensador 2', 2, 4, 1),
 (3, 'Dispensador 3', 3, 4, 1),
-(4, 'Dispensador 4', 4, 3, 1);
+(4, 'Dispensador 4', 4, 3, 1),
+(5, 'dis 8', 5, 5, 8);
 
 -- --------------------------------------------------------
 
@@ -160,7 +166,8 @@ INSERT INTO `maquias` (`Id`, `Descripcion`, `Id_Isla`, `Estado`) VALUES
 (1, 'Maquia 1', 1, 1),
 (2, 'Maquina 2', 1, 1),
 (3, 'Maquina 3', 3, 1),
-(4, 'Maquina 4', 4, 1);
+(4, 'Maquina 4', 4, 1),
+(5, 'Maquina 54', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -314,13 +321,13 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `autos`
 --
 ALTER TABLE `autos`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `combustibles`
@@ -332,7 +339,7 @@ ALTER TABLE `combustibles`
 -- AUTO_INCREMENT de la tabla `dispensador`
 --
 ALTER TABLE `dispensador`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `islas`
@@ -344,7 +351,7 @@ ALTER TABLE `islas`
 -- AUTO_INCREMENT de la tabla `maquias`
 --
 ALTER TABLE `maquias`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`

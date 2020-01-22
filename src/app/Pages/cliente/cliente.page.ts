@@ -49,13 +49,18 @@ export class ClientePage implements OnInit {
     
   }
   GuardarACT(){
+    let pla:string=(<HTMLSelectElement>document.getElementById("txtPlacaN")).value;
+    if(pla.length==0){
+      pla='0';
+    }
     let cli:Cliente={
       Id:this.cliente.Id,
       Cedula:(<HTMLSelectElement>document.getElementById("txtCedulaN")).value,
       Nombre:(<HTMLSelectElement>document.getElementById("txtNombreN")).value,
       Apellido:(<HTMLSelectElement>document.getElementById("txtApellidoN")).value,
       Telefono:(<HTMLSelectElement>document.getElementById("txtTelefonoN")).value,
-      Direccion:(<HTMLSelectElement>document.getElementById("txtDireccionN")).value      
+      Direccion:(<HTMLSelectElement>document.getElementById("txtDireccionN")).value,
+      Placa: pla        
     };
     console.log(cli);
     if(cli.Cedula.length==0){
@@ -89,7 +94,8 @@ export class ClientePage implements OnInit {
       Nombre:(<HTMLSelectElement>document.getElementById("txtNombreN")).value,
       Apellido:(<HTMLSelectElement>document.getElementById("txtApellidoN")).value,
       Telefono:(<HTMLSelectElement>document.getElementById("txtTelefonoN")).value,
-      Direccion:(<HTMLSelectElement>document.getElementById("txtDireccionN")).value      
+      Direccion:(<HTMLSelectElement>document.getElementById("txtDireccionN")).value,
+      Placa:(<HTMLSelectElement>document.getElementById("txtPlacaN")).value       
     };
     console.log(cli);
     if(cli.Cedula.length==0){
@@ -102,9 +108,12 @@ export class ClientePage implements OnInit {
       this.presentToast('Ingrese Telefono');
     }else if(cli.Direccion.length==0){
       this.presentToast('Ingrese Direccion');
+    }else if(cli.Placa.length==0){
+      this.presentToast('Ingrese Placa');
     }else{
       this.serCli.PostClientes(cli).subscribe(
         res => {
+          console.log(res);
           this.modalController.dismiss({cliente:res});
          
         },

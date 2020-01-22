@@ -45,6 +45,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     }
 }
 
+function guardarAuto($Placa,$IdUsr,$dbConn){
+    // desactivarEncargadosAnteriores($idBien,$dbConn);
+    if($Placa!='0'){
+        $sql = $dbConn->prepare("INSERT INTO `autos`( `Placa`, `Id_cliente`)
+     VALUES(:Placa, :Id_cliente)");
+     $sql->bindValue(':Placa',  $Placa);
+     $sql->bindValue(':Id_cliente', $IdUsr);
+     $sql->execute();
+    }
+     
+ }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
@@ -56,7 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             Nombre,
             Apellido,
             Telefono,
-            Direccion
+            Direccion,
+            Estado
         )
         VALUES(
             
@@ -64,7 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             :Nombre,
             :Apellido,
             :Telefono,
-            :Direccion
+            :Direccion,
+            1
         )";
         $statement = $dbConn->prepare($sql);
         $statement->bindValue(':Cedula', $input['Cedula']);
@@ -78,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $postId = $dbConn->lastInsertId();
         if ($postId) {
             $input['Id'] = $postId;
+            guardarAuto($input['Placa'],$postId,$dbConn);
             header("HTTP/1.1 200 OK");
             echo json_encode($input);
         }
@@ -123,7 +137,7 @@ WHERE
     $statement->bindValue(':id',   $input['Id']);
 
     $statement->execute();
-  
+    guardarAuto($input['Placa'],$input['Id'],$dbConn);
     header("HTTP/1.1 200 OK");
     echo json_encode($input);
     } catch (Exception $e) {
