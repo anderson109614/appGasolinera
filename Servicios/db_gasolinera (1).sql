@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-01-2020 a las 02:13:11
+-- Tiempo de generación: 22-01-2020 a las 06:13:53
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -87,8 +87,9 @@ CREATE TABLE `combustibles` (
 --
 
 INSERT INTO `combustibles` (`Id`, `Nombre`, `Precio`, `Cant_Disponible`, `Estado`) VALUES
-(3, 'Extra', 1.2, 10, 1),
-(4, 'Super', 1.8, 1, 1);
+(3, 'Extra', 1.2, 0, 1),
+(4, 'Super', 1.8, 72, 1),
+(5, 'Diesel', 2, 500, 1);
 
 -- --------------------------------------------------------
 
@@ -100,18 +101,19 @@ CREATE TABLE `dispensador` (
   `Id` int(11) NOT NULL,
   `Descripcion` varchar(50) NOT NULL,
   `Id_Maquina` int(11) NOT NULL,
-  `Id_Combustible` int(11) NOT NULL
+  `Id_Combustible` int(11) NOT NULL,
+  `Estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `dispensador`
 --
 
-INSERT INTO `dispensador` (`Id`, `Descripcion`, `Id_Maquina`, `Id_Combustible`) VALUES
-(1, 'Dispensador 1', 1, 3),
-(2, 'Dispensador 2', 2, 4),
-(3, 'Dispensador 3', 3, 4),
-(4, 'Dispensador 4', 4, 3);
+INSERT INTO `dispensador` (`Id`, `Descripcion`, `Id_Maquina`, `Id_Combustible`, `Estado`) VALUES
+(1, 'Dispensador 1', 1, 3, 1),
+(2, 'Dispensador 2', 2, 4, 1),
+(3, 'Dispensador 3', 3, 4, 1),
+(4, 'Dispensador 4', 4, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -122,18 +124,20 @@ INSERT INTO `dispensador` (`Id`, `Descripcion`, `Id_Maquina`, `Id_Combustible`) 
 CREATE TABLE `islas` (
   `Id` int(11) NOT NULL,
   `Descripcion` varchar(50) NOT NULL,
-  `Id_Usuario` int(11) NOT NULL
+  `Id_Usuario` int(11) NOT NULL,
+  `Estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `islas`
 --
 
-INSERT INTO `islas` (`Id`, `Descripcion`, `Id_Usuario`) VALUES
-(1, 'Isla 1', 1),
-(2, 'Isla 2', 1),
-(3, 'Isla 3', 2),
-(4, 'Isla 4', 2);
+INSERT INTO `islas` (`Id`, `Descripcion`, `Id_Usuario`, `Estado`) VALUES
+(1, 'Isla 1', 1, 1),
+(2, 'Isla 2', 1, 1),
+(3, 'Isla 3', 2, 1),
+(4, 'Isla 4', 2, 1),
+(5, 'Tra', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -144,18 +148,19 @@ INSERT INTO `islas` (`Id`, `Descripcion`, `Id_Usuario`) VALUES
 CREATE TABLE `maquias` (
   `Id` int(11) NOT NULL,
   `Descripcion` varchar(50) NOT NULL,
-  `Id_Isla` int(11) NOT NULL
+  `Id_Isla` int(11) NOT NULL,
+  `Estado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `maquias`
 --
 
-INSERT INTO `maquias` (`Id`, `Descripcion`, `Id_Isla`) VALUES
-(1, 'Maquia 1', 1),
-(2, 'Maquina 2', 1),
-(3, 'Maquina 3', 3),
-(4, 'Maquina 4', 4);
+INSERT INTO `maquias` (`Id`, `Descripcion`, `Id_Isla`, `Estado`) VALUES
+(1, 'Maquia 1', 1, 1),
+(2, 'Maquina 2', 1, 1),
+(3, 'Maquina 3', 3, 1),
+(4, 'Maquina 4', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -226,7 +231,14 @@ INSERT INTO `ventas` (`Id`, `Fecha`, `ID_Placa`, `ID_Dispensador`, `Cantidad`, `
 (1, '2020-01-12', 1, 3, 5, 9),
 (2, '2020-01-12', 1, 3, 5, 9),
 (3, '2020-01-12', 1, 3, 5, 9),
-(4, '2020-01-12', 1, 3, 2, 3.6);
+(4, '2020-01-12', 1, 3, 2, 3.6),
+(5, '2020-01-21', 2, 3, 1, 1.8),
+(6, '2020-01-21', 2, 4, 10, 12),
+(7, '2020-01-21', 2, 3, 10, 18),
+(8, '2020-01-21', 3, 3, 12, 21.6),
+(9, '2020-01-21', 3, 3, 2, 3.6),
+(10, '2020-01-21', 1, 3, 2, 3.6),
+(11, '2020-01-21', 1, 3, 2, 3.6);
 
 --
 -- Índices para tablas volcadas
@@ -314,7 +326,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `combustibles`
 --
 ALTER TABLE `combustibles`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `dispensador`
@@ -326,7 +338,7 @@ ALTER TABLE `dispensador`
 -- AUTO_INCREMENT de la tabla `islas`
 --
 ALTER TABLE `islas`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `maquias`
@@ -350,7 +362,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
